@@ -35,14 +35,14 @@ const FaqAccordion = () => {
   };
 
   return (
-    <div className="md:w-[70%] flex flex-col items-center gap-2">
+    <div className="w-full md:w-full flex flex-col items-center gap-2">
       {faqData.map((faq, index) => (
-        <div key={index} className="min-w-[90%] max-w-[90%] border border-gray-200 py-4 px-4 rounded-md">
+        <div key={index} className="w-[90%] md:w-[90%] border border-gray-200 py-4 px-4 rounded-md">
           <div
-            className="w-full cursor-pointer text-base md:text-lg font-semibold flex justify-between items-center  "
+            className=" cursor-pointer text-base md:text-lg font-semibold flex justify-between items-center  "
             onClick={() => toggleAccordion(index)}
           >
-            <p className='w-full'>{faq.question}</p>
+            <p className=''>{faq.question}</p>
             <div className='p-2 bg-gray-300'>
                 {index === openIndex ? <FaMinus /> :<FaPlus />}
             </div>
@@ -54,7 +54,7 @@ const FaqAccordion = () => {
                     animate={{height:'auto',opacity:1}}
                     exit={{height:0,opacity:0}}
                     >
-                    <p>{faq.answer}</p> 
+                    <p className="max-w-[90]">{faq.answer}</p> 
                     </motion.div>
                 )}
                 </AnimatePresence>
