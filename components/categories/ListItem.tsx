@@ -30,8 +30,8 @@ export default function ListItem({product}:{product:Product}){
         <div className="bg-gray-100 flex flex-col md:flex-row gap-8 p-8 w-full md:h-[300px] rounded-lg" >
         <div className="relative md:w-[30%] md:h-[260px] group bg-white rounded-lg" >
             <Link className="absolute h-full w-full top-0 left-0 z-40" href={`http://localhost:3000/product/${product.id}`}></Link>
-            <Image className="rounded-lg w-full h-full transition duration-300 group-hover:opacity-0" src={`http://localhost:8000${product.main_image}`} width={260} height={260} alt={product.description!} />
-            <Image className="rounded-lg absolute opacity-0 top-0 w-full h-full left-0  z-10 md:my-0  transition duration-300 ease-in-out group-hover:opacity-100" src={product.images!.length > 0  ? `http://localhost:8000${product.images![0].image}` : `http://localhost:8000${product.main_image}` } width={260} height={260} alt={product.name} />
+            <Image className="rounded-lg w-full h-full transition duration-300 group-hover:opacity-0" src={product.main_image} width={260} height={260} alt={product.description!} />
+            <Image className="rounded-lg absolute opacity-0 top-0 w-full h-full left-0  z-10 md:my-0  transition duration-300 ease-in-out group-hover:opacity-100" src={product.images!.length > 0  ? product.images![0].image : product.main_image } width={260} height={260} alt={product.name} />
         </div>
 
         <div className="infos md:w-[70%] flex flex-col gap-4">
