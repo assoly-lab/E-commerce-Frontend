@@ -46,10 +46,10 @@ export default function ProductsList({products}:{products:Product[]}){
                         setIsList(false)
                         setIsGrid(true)
                         }} style={{color: isGrid ? '#E73F10' : 'black' }} 
-                        className="md:w-8 md:h-8 cursor-pointer hover:!text-[#E73F10]" />
+                        className="w-8 h-8 cursor-pointer hover:!text-[#E73F10]" />
                 </div>
                 <div className="filters">
-                    <select onChange={(e)=>filterProductsList(e.target.value) } name="filers" id="filers" className="cursor-pointer py-2 px-2 bg-[#E73F10] text-white  md:font-semibold">
+                    <select onChange={(e)=>filterProductsList(e.target.value) } name="filers" id="filers" className="cursor-pointer py-2 md:px-2 bg-[#E73F10] text-white  md:font-semibold">
                         <option value="OldtoNew">Date,old to new</option>
                         <option value="NewtoOld">Date,new to old</option>
                         <option value="LowtoHigh">Price,low to high</option>
