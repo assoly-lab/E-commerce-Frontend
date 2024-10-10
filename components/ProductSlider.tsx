@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Slider from "react-slick";
 import { Img, Product } from '@/utils/Types';
 import Image from 'next/image';
@@ -20,7 +20,7 @@ export default function ProductSlider({product}:{product:Product}){
     arrows:false,
     fade:true,
     appendDots: (dots:React.ReactNode[]) => (
-        <ul style={{gap:"30px",margin:'0 auto'}} className="custom-dots w-[90%] mx-auto md:mx-0 md:w-[90%] flex justify-center">
+        <ul style={{gap:"30px",margin:'0 auto',width:'90%'}} className="custom-dots w-[90%] mx-auto md:mx-0 md:w-[90%] flex justify-center">
             {images.map((image:Img, index:number) => (
                 <li style={{width:"100px",cursor:"pointer"}} key={index} className=" cursor-pointer border border-gray-100" onClick={()=>setMainImage((prev:string) => prev != image.image ? image.image: prev)}>
                     <Image className='' src={image.image} width={100} height={100} alt={product.name}/>
