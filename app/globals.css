@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer utilities {
+    .pause-animation {
+      animation-play-state: paused;
+    }
+  }
+
+
+.slick-dots{
+    position: initial !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+@keyframes slide{
+    from{
+        transform: translateX(0%);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+
+.text-slide{
+    animation: slide 10s linear infinite;
+}
