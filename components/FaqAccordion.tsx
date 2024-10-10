@@ -35,14 +35,14 @@ const FaqAccordion = () => {
   };
 
   return (
-    <div className="w-[90%] md:w-[70%] flex flex-col gap-2">
+    <div className="md:w-[70%] flex flex-col items-center gap-2">
       {faqData.map((faq, index) => (
-        <div key={index} className="border border-gray-200 py-4 px-4 rounded-md">
+        <div key={index} className="min-w-[90%] max-w-[90%] border border-gray-200 py-4 px-4 rounded-md">
           <div
-            className="cursor-pointer text-base md:text-lg font-semibold flex justify-between items-center  "
+            className="w-full cursor-pointer text-base md:text-lg font-semibold flex justify-between items-center  "
             onClick={() => toggleAccordion(index)}
           >
-            <p>{faq.question}</p>
+            <p className='w-full'>{faq.question}</p>
             <div className='p-2 bg-gray-300'>
                 {index === openIndex ? <FaMinus /> :<FaPlus />}
             </div>
