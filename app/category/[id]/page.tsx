@@ -70,7 +70,7 @@ export default async function Category({params}:{params: { id: string }}){
                     <p className="md:text-lg font-normal">{category.description}</p>
                 </div>
                 {category.image && <div className="img">
-                    <Image className="w-[420px] h-[420px] md:w-[255px] md:h-[255px]" src={category.image!} width={255} height={255} alt={category.description!} />
+                    <Image className="w-[305px] h-[305px] md:w-[255px] md:h-[255px]" src={category.image!} width={255} height={255} alt={category.description!} />
                 </div>}
             </div>}
             <div className="container w-full flex justify-center mt-20 ">
