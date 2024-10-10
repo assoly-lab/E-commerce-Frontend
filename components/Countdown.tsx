@@ -26,7 +26,7 @@ const Countdown = ({ targetDate }:{targetDate:string}) => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, [targetDate,calculateTimeLeft]);
 
   return (
     <div className="flex justify-center space-x-4">

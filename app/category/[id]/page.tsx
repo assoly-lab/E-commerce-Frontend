@@ -1,7 +1,7 @@
 import BreadCrumb from "@/components/BreadCrumb"
 import CategoryCountList from "@/components/categories/CategoryCountList"
 import ProductsList from "@/components/categories/ProductsList"
-import { Category, CategoryCountsList, Product } from "@/utils/Types"
+import type { Category, CategoryCountsList, Product } from "@/utils/Types"
 import Image from "next/image"
 
 

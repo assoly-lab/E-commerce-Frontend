@@ -133,7 +133,7 @@ export default function QuickView(){
           document.body.style.overflow = 'auto'; 
           window.removeEventListener('resize', handleResize);
         };
-      }, []);
+      }, [productId]);
 
       useEffect(()=>{
         if(descRef.current){

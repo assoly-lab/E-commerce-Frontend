@@ -12,6 +12,8 @@ export default function OrderSummary(){
     const {cartItems,setCartItems,subTotal,setSubTotal} = useContext(AppContext)
     const [isSummary,setIsSummary] = useState<Boolean>(false)
     const [itemsNumber,setItemsNumber] = useState<number>(0)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=>{ 
         const handleCartItems =  async (data:number[],items:CartObject[])=>{
             if(cartItems.length == 0){

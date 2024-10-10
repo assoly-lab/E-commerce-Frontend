@@ -15,7 +15,7 @@ export default function Cart(){
     const ref = useRef<HTMLDivElement>(null)
     const [style,setStyle] = useState({})
 
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=>{
         
         const handleCartItems =  async (data:number[],items:CartObject[])=>{
@@ -64,6 +64,7 @@ export default function Cart(){
         }
     },[ref.current?.scrollHeight])
 
+    
     useEffect(()=>{
         const total = cartItems.reduce((acc:number,item:Cartitem)=>{
             return acc + (item.quantity * parseFloat(item.product?.price.toString()))
@@ -71,7 +72,7 @@ export default function Cart(){
         },0)
         setSubTotal(total)
 
-    },[cartItems])
+    },[cartItems,setSubTotal])
 
     return (
             <motion.div 

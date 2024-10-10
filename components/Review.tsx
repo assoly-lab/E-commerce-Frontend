@@ -35,7 +35,7 @@ export default function Review(){
             }
         }
         getProductReviewsSummary(id)
-    },[reviewsList])
+    },[reviewsList,id])
 
     return (
         <div className="w-full md:w-[80%]" >

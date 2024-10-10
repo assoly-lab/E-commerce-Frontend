@@ -34,6 +34,8 @@ export default function CartPage(){
 
     },[cartItems,setSubTotal])
 
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=>{
         const handleCartItems =  async (data:number[],items:CartObject[])=>{
             try {
@@ -63,7 +65,7 @@ export default function CartPage(){
                 handleCartItems(ids,items)
             }
             }
-    },[setCartItems])
+    },[])
 
     return (
         <>

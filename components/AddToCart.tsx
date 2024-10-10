@@ -10,7 +10,7 @@ export default function AddToCart({item}:{item:Product}){
     const [quantity,setQuantity] = useState<number>(1)
     const {cartItems,setCartItems,setCartCount} = useContext(AppContext)
 
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=>{
         
         const handleCartItems =  async (data:number[],items:CartObject[])=>{

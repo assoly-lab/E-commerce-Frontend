@@ -21,7 +21,7 @@ export default function UserDetails(){
         if(!access){
             router.push('/login')
         }
-    },[])
+    },[router])
     useEffect(()=>{
         const getUserInfos = async ()=>{
                 try {
@@ -46,7 +46,7 @@ export default function UserDetails(){
             }
                 }
         getUserInfos()
-    },[])
+    },[router])
 
     return (
         <div className="w-full h-full flex justify-center">

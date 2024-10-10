@@ -83,7 +83,7 @@ export default function LoginForm(){
         if(access){
             router.push('/profile')
         }
-    },[])
+    },[router])
     return (
         <form ref={ref} className="py-6 bg-gray-200 rounded-lg w-[40%]  flex flex-col items-center gap-4" action={async (formData:FormData)=>{
             const errors:LoginFormErrors = {}

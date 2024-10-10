@@ -30,7 +30,7 @@ export default function Navbar(){
         const ids = JSON.parse(data)
         setCartCount(ids.length)
       }
-    },[])
+    },[setCartCount])
 
     return  (
     <div className=" w-full flex justify-center pb-4">

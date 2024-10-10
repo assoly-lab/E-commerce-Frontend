@@ -26,7 +26,7 @@ export default function ListReviews({id}:{id:string}){
                 }
         }
         getReviewsList(id)
-    },[])
+    },[id,setReviewsList])
 
     return (
         <div className="px-4 md:w-[80%] last:mb-0">
