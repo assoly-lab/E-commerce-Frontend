@@ -23,7 +23,6 @@ export default async function ProductsPage(){
         <>
         <div className="w-full bg-gray-100 flex items-center flex-col py-8">
             <p className="text-3xl font-semibold">Products</p>
-            {/* @ts-expect-error Server Component */}
             <BreadCrumb  name="products" />
         </div>
         <div className="container w-full flex justify-center mt-20 ">
