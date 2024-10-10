@@ -22,7 +22,7 @@ export default function CartPage(){
             }
           }
           getFeaturedProducts()
-    },[setFeaturedItems])
+    },[])
 
 
     useEffect(()=>{
@@ -32,7 +32,7 @@ export default function CartPage(){
         },0)
         setSubTotal(total)
 
-    },[cartItems,setSubTotal])
+    },[cartItems])
 
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

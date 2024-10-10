@@ -36,7 +36,7 @@ export default function DesktopNav(){
     }
     useEffect(()=>{
         getCategories()
-    },[getCategories])
+    },[])
 
     return (
         <div className="grid grid-cols-4 gap-5 justify-items-center">

@@ -43,7 +43,7 @@ export default function AddToCart({item}:{item:Product}){
             handleCartItems(ids,items)
         }
         }
-    },[setCartItems])
+    },[])
 
 
     const handleOnClick = (item:Product)=>{

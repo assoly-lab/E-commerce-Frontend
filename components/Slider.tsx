@@ -40,7 +40,7 @@ export default function AnimatedSlider(){
     }
     useEffect(()=>{
         getCategories()
-    },[getCategories])
+    },[])
 
 
 

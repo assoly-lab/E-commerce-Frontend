@@ -31,7 +31,7 @@ export default function CategoryShowcase(){
     }
     useEffect(()=>{
         getCategories()
-    },[getCategories])
+    },[])
 
     return (
         <div className=" w-[90%] mt-24 md:w-[80%]">

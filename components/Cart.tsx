@@ -72,7 +72,7 @@ export default function Cart(){
         },0)
         setSubTotal(total)
 
-    },[cartItems,setSubTotal])
+    },[cartItems])
 
     return (
             <motion.div 

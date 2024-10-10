@@ -39,7 +39,8 @@ export default async function Home() {
           </div>
           <div>
             <div className="w-full flex flex-col justify-center items-center mb-16 mt-20">
-          {/* @ts-expect-error Server Component */}
+              
+              {/* @ts-expect-error Server Component */}
               <BestSelling />
             </div>
           </div>

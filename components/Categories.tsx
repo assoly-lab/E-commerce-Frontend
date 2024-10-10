@@ -30,7 +30,7 @@ export default function Categories() {
 
   useEffect(() => {
     getCategories();
-  }, [getCategories]);
+  }, []);
 
   return (
     <div className="flex flex-col gap-6">
