@@ -22,7 +22,7 @@ export default function Review(){
         const getProductReviewsSummary = async (id:string)=>{
             if(id){
                 try{
-                    const response = await fetch(`http://localhost:8000/api/productreviewsummary/${id}/`,{cache:'no-store'})
+                    const response = await fetch(`https://abdo008.pythonanywhere.com/api/productreviewsummary/${id}/`,{cache:'no-store'})
                     if(response.ok){
                         const data = await response.json()
                         if(data){

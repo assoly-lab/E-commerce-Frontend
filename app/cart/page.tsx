@@ -14,7 +14,7 @@ export default function CartPage(){
 
     useEffect( ()=>{
         const getFeaturedProducts = async ()=>{
-            const response = await fetch('http://localhost:8000/api/best-selling/')
+            const response = await fetch('https://abdo008.pythonanywhere.com/api/best-selling/')
             if(response.ok){
                 const data = await response.json()
                 console.log(data)
@@ -39,7 +39,7 @@ export default function CartPage(){
     useEffect(()=>{
         const handleCartItems =  async (data:number[],items:CartObject[])=>{
             try {
-                const response = await fetch('http://localhost:8000/api/cart/',{
+                const response = await fetch('https://abdo008.pythonanywhere.com/api/cart/',{
                     method:'POST',
                     headers:{
                         'Content-type':'application/json'

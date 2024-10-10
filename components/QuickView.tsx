@@ -43,7 +43,7 @@ export default function QuickView(){
                 setCartItems(updatedItems)
                 
                 if(access){
-                    const response = await fetchWithAuth('http://localhost:8000/api/update/cartitem/',{
+                    const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/update/cartitem/',{
                         method:'PUT',
                         body:JSON.stringify({'product_id':item.id,'quantity':quantity})
                     })
@@ -61,7 +61,7 @@ export default function QuickView(){
             setCartItems((prev:Cartitem[] | [])=> [...prev,{product:item,quantity:quantity}])
             if(access){
 
-                    const response = await fetchWithAuth('http://localhost:8000/api/create/cartitem/',{
+                    const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/create/cartitem/',{
                         method:'POST',
                         body:JSON.stringify({'cart_items':{
                             'id':item.id,
@@ -112,7 +112,7 @@ export default function QuickView(){
         document.body.style.overflow = 'hidden';
         const getProduct = async ()=>{
             try{
-                const response = await fetch(`http://localhost:8000/api/product/${productId}/`)
+                const response = await fetch(`https://abdo008.pythonanywhere.com/api/product/${productId}/`)
                 if(response.ok){
                     const data = await response.json()
                     setProduct(data[0])

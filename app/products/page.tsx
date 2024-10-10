@@ -5,7 +5,7 @@ import ParentCategoryCountList from "@/components/products/ParentCategoryCountLi
 
 const getParentCategoriesList = async ()=>{
     try{
-        const response = await fetch('http://localhost:8000/api/products')
+        const response = await fetch('https://abdo008.pythonanywhere.com/api/products')
         if(!response.ok){
             throw new Error('Something went wrong!')
         }

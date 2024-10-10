@@ -16,7 +16,7 @@ export default function Categories() {
   const getCategories = async () => {
     if (categories == undefined) {
       try {
-        const response = await fetch("http://localhost:8000/api/categories/");
+        const response = await fetch("https://abdo008.pythonanywhere.com/api/categories/");
         if (response.ok) {
           const data = await response.json();
           setCategories(data);

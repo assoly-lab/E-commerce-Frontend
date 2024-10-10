@@ -16,7 +16,7 @@ export default function ListReviews({id}:{id:string}){
     useEffect(()=>{
         const getReviewsList = async (id:string)=>{
             try{
-                const response = await fetch(`http://localhost:8000/api/productreviews/${id}/`)
+                const response = await fetch(`https://abdo008.pythonanywhere.com/api/productreviews/${id}/`)
                 if(response.ok){
                     const data = await response.json()
                     setReviewsList(data)

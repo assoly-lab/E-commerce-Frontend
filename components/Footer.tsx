@@ -55,8 +55,8 @@ const DesktopLinks = ()=>{
         <div className="container hidden md:flex md:gap-16 md:w-fit md:h-fit">
             <div className="links group">
                 <p className="font-medium text-2xl mb-4 group-hover:text-[#f98463]">Quick Links</p>
-                <Link href={'http://localhost:3000/profile'}><p className="text-lg hover:text-[#f98463]">My Account</p></Link>
-                <Link href={'http://localhost:3000/cart'}><p className="text-lg hover:text-[#f98463]">My Cart</p></Link>
+                <Link href={'/profile'}><p className="text-lg hover:text-[#f98463]">My Account</p></Link>
+                <Link href={'/cart'}><p className="text-lg hover:text-[#f98463]">My Cart</p></Link>
                 <p className="text-lg">Need Help?</p>
             </div>
             <div className="links group">

@@ -15,7 +15,7 @@ export default function AddToCart({item}:{item:Product}){
         
         const handleCartItems =  async (data:number[],items:CartObject[])=>{
             try {
-                const response = await fetch('http://localhost:8000/api/cart/',{
+                const response = await fetch('https://abdo008.pythonanywhere.com/api/cart/',{
                     method:'POST',
                     headers:{
                         'Content-type':'application/json'

@@ -17,7 +17,7 @@ const handleUserCartItems = async (accessToken:string) => {
     if (localData) {
         const localCartItems = JSON.parse(localData)
         try {
-            const response = await fetchWithAuth('http://localhost:8000/api/create/cartitems/', {
+            const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/create/cartitems/', {
                 method: 'POST',
                 body: JSON.stringify({ cart_items: localCartItems }), // Make sure to stringify the body
                 headers: {
@@ -51,7 +51,7 @@ const getUserCartItems = async (setCartCount:React.Dispatch<React.SetStateAction
     const accessToken = localStorage.getItem('access')
     if(!localData && accessToken){
         try{
-        const response = await fetchWithAuth('http://localhost:8000/api/list/cartitems/')
+        const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/list/cartitems/')
         if(response.ok){
             const data = await response.json()
             setCartCount(data.length)
@@ -101,7 +101,7 @@ export default function LoginForm(){
                     return
                 }
                 try {
-                    const response = await fetch('http://localhost:8000/api/auth/jwt/create/', {
+                    const response = await fetch('https://abdo008.pythonanywhere.com/api/auth/jwt/create/', {
                         method: 'POST',
                         body: formData,
                         credentials:'include',

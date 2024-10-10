@@ -16,7 +16,7 @@ import FaqAccordion from "@/components/FaqAccordion"
 
 const getFeaturedProducts = async ()=>{
     try{
-    const response = await fetch('http://localhost:8000/api/best-selling/')
+    const response = await fetch('https://abdo008.pythonanywhere.com/api/best-selling/')
     if(response.ok){
         const data = await response.json()
         return data
@@ -31,7 +31,7 @@ const getFeaturedProducts = async ()=>{
 const getProductReviewsSummary = async (id:string)=>{
     if(id){
         try{
-            const response = await fetch(`http://localhost:8000/api/productreviewsummary/${id}/`,{cache:'no-store'})
+            const response = await fetch(`https://abdo008.pythonanywhere.com/api/productreviewsummary/${id}/`,{cache:'no-store'})
             if(response.ok){
                 const data = await response.json()
                 return data
@@ -45,7 +45,7 @@ const getProductReviewsSummary = async (id:string)=>{
 const getProductDetails = async (id:string)=>{
     if(id){
         try{
-            const response = await fetch(`http://localhost:8000/api/product/${id}/`,{cache:'no-store'})
+            const response = await fetch(`https://abdo008.pythonanywhere.com/api/product/${id}/`,{cache:'no-store'})
             if(response.ok){
                 const data = await response.json()
                 const product = data[0]
@@ -68,7 +68,7 @@ const getProductDetails = async (id:string)=>{
 const getCategory = async (id:number)=>{
     if(id){
         try{
-            const response = await fetch(`http://localhost:8000/api/category/${id}`)
+            const response = await fetch(`https://abdo008.pythonanywhere.com/api/category/${id}`)
             if (response.ok){
                 const data = await response.json()
                 return data

@@ -26,7 +26,7 @@ export default function UserDetails(){
         const getUserInfos = async ()=>{
                 try {
                     setIsLoading(true)
-                    const response = await fetchWithAuth('http://localhost:8000/api/auth/users/me/')
+                    const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/auth/users/me/')
                     if(response.status === 400){
                         localStorage.removeItem('access')
                         router.push('/')

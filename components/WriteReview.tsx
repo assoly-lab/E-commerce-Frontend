@@ -73,7 +73,7 @@ const handleReviewSubmit = async (formState: FormState,setFormState:React.Dispat
       formData.append('product',id)
       
       try {
-          const response = await fetch('http://localhost:8000/api/submitreview/', {
+          const response = await fetch('https://abdo008.pythonanywhere.com/api/submitreview/', {
             method: 'POST',
             body: formData,
           });

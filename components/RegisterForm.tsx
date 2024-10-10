@@ -40,7 +40,7 @@ export default function RegisterForm(){
                     return
                 }
                 try {
-                    const response = await fetch('http://localhost:8000/api/auth/jwt/users/', {
+                    const response = await fetch('https://abdo008.pythonanywhere.com/api/auth/jwt/users/', {
                         method: 'POST',
                         body: formData,
                     });

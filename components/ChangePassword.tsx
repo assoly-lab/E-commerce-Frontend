@@ -41,7 +41,7 @@ export default function ChangePassword({setChangePassword}:{setChangePassword:Re
                         setPasswordChangeErrors(errors)
                     }else{
                         try{
-                            const response = await fetchWithAuth('http://localhost:8000/api/auth/users/set_password/',{
+                            const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/auth/users/set_password/',{
                                 method:'POST',
                                 body: formData
                             })

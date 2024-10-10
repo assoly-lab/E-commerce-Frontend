@@ -7,7 +7,7 @@ import Image from "next/image"
 
 const getCategoryProductsCount = async ()=>{
     try{
-        const response = await fetch('http://localhost:8000/api/category/count',{cache:'no-store'})
+        const response = await fetch('https://abdo008.pythonanywhere.com/api/category/count',{cache:'no-store'})
         if(!response.ok){
             throw new Error('Something went wrong!')
         }
@@ -23,7 +23,7 @@ const getCategoryProductsCount = async ()=>{
 
 const getCategoryProductsList = async (id:string)=>{
     try{
-        const response = await fetch(`http://localhost:8000/api/category/${id}/products/`,{cache:'no-store'})
+        const response = await fetch(`https://abdo008.pythonanywhere.com/api/category/${id}/products/`,{cache:'no-store'})
         if (! response.ok){
             throw new Error('something went wrong !')
         }
@@ -40,7 +40,7 @@ const getCategoryProductsList = async (id:string)=>{
 const getCartegoryInfos = async (id:string)=>{
 
     try{
-        const response = await fetch(`http://localhost:8000/api/category/${id}`,{cache:'no-store'})
+        const response = await fetch(`https://abdo008.pythonanywhere.com/api/category/${id}`,{cache:'no-store'})
         if(!response.ok){
             throw new Error('failed to fetch category')
         }

@@ -3,7 +3,7 @@ import BestSellingItem from "./BestSellingItem"
 
 
 const getBestSellingProducts = async ()=>{
-    const response = await fetch('http://localhost:8000/api/best-selling/')
+    const response = await fetch('https://abdo008.pythonanywhere.com/api/best-selling/')
     const data = await response.json()
     return data
 }
