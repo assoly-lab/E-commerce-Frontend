@@ -41,8 +41,8 @@ export default function ProductsNav(){
                         <div key={category.id} className="main-cat pb-4 flex flex-col whitespace-nowrap group pt-4"><p className="pb-4 text-xl group-hover:text-[#E73F10]" >{category.name }</p>
                         { category.children && category.children.map((child:Category)=>{
                             return (
-                                <Link href={`/category/${child.id}`}>
-                                <p key={child.id} className="text-base pb-4 hover:text-[#E73F10] cursor-pointer" >
+                                <Link key={child.id} href={`/category/${child.id}`}>
+                                <p  className="text-base pb-4 hover:text-[#E73F10] cursor-pointer" >
                                      {child.name}
                                 </p>
                                 </Link>

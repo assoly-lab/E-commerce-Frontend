@@ -10,9 +10,6 @@ export default function AddToCart({item}:{item:Product}){
     const [quantity,setQuantity] = useState<number>(1)
     const {cartItems,setCartItems,setCartCount} = useContext(AppContext)
 
-    if(!item){
-        return null
-    }
 
     useEffect(()=>{
         
@@ -46,7 +43,7 @@ export default function AddToCart({item}:{item:Product}){
             handleCartItems(ids,items)
         }
         }
-    },[])
+    },[setCartItems])
 
 
     const handleOnClick = (item:Product)=>{

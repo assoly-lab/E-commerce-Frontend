@@ -42,7 +42,7 @@ export default function CategoriesList({categories}:{categories:CategoryCountsLi
                 {categories.length > 0 && Array.isArray(categories) &&
                 categories.map((category:CategoryCountsList)=>{
                     return (
-                        <CategoryListItem category={category} />
+                        <CategoryListItem key={category.id} category={category} />
                     )
                 })
 
@@ -59,7 +59,7 @@ export default function CategoriesList({categories}:{categories:CategoryCountsLi
                 {categories.length > 0 && Array.isArray(categories) &&
                 categories.map((category:CategoryCountsList)=>{
                     return (
-                        <CategoryGridItem category={category} />
+                        <CategoryGridItem key={category.id} category={category} />
                     )
                 })
 

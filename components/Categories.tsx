@@ -67,12 +67,11 @@ export default function Categories() {
                       isSub == category.id &&
                       category.children.map((subcat: Category) => {
                         return (
-                            <Link href={`/category/${subcat.id}`}>
+                            <Link key={subcat.id} href={`/category/${subcat.id}`}>
                             <motion.h2
                                 initial={{ height: 0 }}
                                 animate={{ height: "auto" }}
                                 exit={{ height: 0, transition: { duration: 2 } }}
-                                key={subcat.id}
                                 className="ml-2 hover:text-[#E73F10]"
                             >
                                 {" "}

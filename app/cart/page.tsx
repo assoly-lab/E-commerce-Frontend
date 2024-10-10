@@ -22,7 +22,7 @@ export default function CartPage(){
             }
           }
           getFeaturedProducts()
-    },[])
+    },[setFeaturedItems])
 
 
     useEffect(()=>{
@@ -32,7 +32,7 @@ export default function CartPage(){
         },0)
         setSubTotal(total)
 
-    },[cartItems])
+    },[cartItems,setSubTotal])
 
     useEffect(()=>{
         const handleCartItems =  async (data:number[],items:CartObject[])=>{
@@ -63,7 +63,7 @@ export default function CartPage(){
                 handleCartItems(ids,items)
             }
             }
-    },[])
+    },[setCartItems])
 
     return (
         <>
@@ -109,10 +109,8 @@ export default function CartPage(){
 
 
 const CartPageItem = ({item}:{item:Cartitem})=>{
-
-    if(!item){
-        return null
-    }
+    const [quantity,setQuantity] = useState<number>(item.quantity)
+    const {cartItems,setCartItems} = useContext(AppContext)
 
     const IncrementUpdate = ()=>{
         const updatedItems = cartItems.map((obj:Cartitem)=>{
@@ -182,8 +180,7 @@ const CartPageItem = ({item}:{item:Cartitem})=>{
 
     }
 
-    const [quantity,setQuantity] = useState<number>(item.quantity)
-    const {cartItems,setCartItems} = useContext(AppContext)
+
     return (
         <div key={item?.product?.id} className="w-[90%] md:w-[70%] border border-gray-200 flex flex-col items-center gap-4 py-4">
             {item &&

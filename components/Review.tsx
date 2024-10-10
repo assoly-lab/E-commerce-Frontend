@@ -248,13 +248,13 @@ const ShippingPolicy = ()=>{
             <div>
                 <span className="text-lg font-semibold mb-2">**Shipping Methods:**</span>
                 <p>
-                We offer several shipping options to cater to your preferences. Our standard shipping option provides reliable delivery within [X] business days. For those who need their orders expedited, we also offer express shipping with delivery within [X] business days. Please note that shipping times may vary based on your location.
+                We offer several shipping options to cater to your preferences. Our standard shipping option provides reliable delivery within 3 business days. For those who need their orders expedited, we also offer express shipping with delivery within 2 business days. Please note that shipping times may vary based on your location.
                 </p>
             </div>
             <div>
                 <span className="text-lg font-semibold mb-2">**Shipping Costs:**</span>
                 <p>
-                Shipping costs are calculated based on your order's weight, dimensions, destination, and chosen shipping method. You can view the shipping cost for your order during the checkout process before finalizing your purchase. We occasionally offer free shipping promotions, so keep an eye out for those special deals.
+                Shipping costs are calculated based on your order&apos;s weight, dimensions, destination, and chosen shipping method. You can view the shipping cost for your order during the checkout process before finalizing your purchase. We occasionally offer free shipping promotions, so keep an eye out for those special deals.
                 </p>
             </div>
             <div>
@@ -272,7 +272,7 @@ const ShippingPolicy = ()=>{
             <div>
                 <span className="text-lg font-semibold mb-2">**Customs and Duties:**</span>
                 <p>
-                For international orders, please be aware that customs and import duties may apply depending on your country's regulations. Any additional charges for customs clearance are the responsibility of the recipient. We recommend contacting your local customs office for more information about these potential fees.
+                For international orders, please be aware that customs and import duties may apply depending on your country&apos;s regulations. Any additional charges for customs clearance are the responsibility of the recipient. We recommend contacting your local customs office for more information about these potential fees.
                 </p>
             </div>
             <div>
@@ -281,7 +281,7 @@ const ShippingPolicy = ()=>{
                 It is crucial to provide accurate shipping information to ensure successful delivery. We cannot be held responsible for any delays or misdeliveries resulting from incorrect or incomplete addresses provided by the customer.
                 </p>
             </div>
-            <p>At E-STORE, your satisfaction is our priority. If you have any questions or concerns about our Shipping Policy or your specific order, please don't hesitate to contact our customer support team at e-store@my-shop.com .</p>
+            <p>At E-STORE, your satisfaction is our priority. If you have any questions or concerns about our Shipping Policy or your specific order, please don&apos;t hesitate to contact our customer support team at e-store@my-shop.com .</p>
 
             <p>Thank you for choosing E-STORE. We look forward to serving you and delivering your order with care and efficiency.</p>
 
