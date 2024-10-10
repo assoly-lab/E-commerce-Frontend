@@ -9,7 +9,7 @@ const nextConfig = {
             pathname: '/media/**/**',
           },
         ],
-        domains: ['https://abdo008.pythonanywhere.com'],
+        domains: ['abdo008.pythonanywhere.com'],
       },
 
 };
