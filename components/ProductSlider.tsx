@@ -20,7 +20,7 @@ export default function ProductSlider({product}:{product:Product}){
     arrows:false,
     fade:true,
     appendDots: (dots:React.ReactNode[]) => (
-        <ul style={{gap:"30px"}} className="custom-dots w-[90%] mx-auto md:w-full flex justify-center">
+        <ul style={{gap:"30px"}} className="custom-dots w-[90%] mx-auto md:mx-0 md:w-full flex justify-center">
             {images.map((image:Img, index:number) => (
                 <li style={{width:"100px",cursor:"pointer"}} key={index} className=" cursor-pointer" onClick={()=>setMainImage((prev:string) => prev != image.image ? image.image: prev)}>
                     <Image className='' src={image.image} width={100} height={100} alt={product.name}/>

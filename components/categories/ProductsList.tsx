@@ -35,28 +35,30 @@ export default function ProductsList({products}:{products:Product[]}){
 
     return (
         <div className="w-full">
-            <div className="w-full flex justify-between items-center mb-4">
-                <div className="icons flex gap-4 ">
-                    <FaListUl onClick={()=>{
-                        setIsList(true)
-                        setIsGrid(false)
-                        }} style={{color: isList ? '#E73F10' : 'black' }} 
-                        className="w-8 h-8 cursor-pointer hover:!text-[#E73F10]" />
-                    <IoGrid onClick={()=>{
-                        setIsList(false)
-                        setIsGrid(true)
-                        }} style={{color: isGrid ? '#E73F10' : 'black' }} 
-                        className="w-8 h-8 cursor-pointer hover:!text-[#E73F10]" />
+            <div className="w-full flex flex-col gap-4 md:flex-row justify-between items-center mb-4">
+                <div className="flex flex-1 justify-between gap-4">
+                    <div className="icons flex gap-4 mr-2 ">
+                        <FaListUl onClick={()=>{
+                            setIsList(true)
+                            setIsGrid(false)
+                            }} style={{color: isList ? '#E73F10' : 'black' }} 
+                            className="w-8 h-8 cursor-pointer hover:!text-[#E73F10]" />
+                        <IoGrid onClick={()=>{
+                            setIsList(false)
+                            setIsGrid(true)
+                            }} style={{color: isGrid ? '#E73F10' : 'black' }} 
+                            className="w-8 h-8 cursor-pointer hover:!text-[#E73F10]" />
+                    </div>
+                    <div className="filters">
+                        <select onChange={(e)=>filterProductsList(e.target.value) } name="filers" id="filers" className="cursor-pointer py-2 px-2 bg-[#E73F10] text-white  font-semibold">
+                            <option value="OldtoNew">Date,old to new</option>
+                            <option value="NewtoOld">Date,new to old</option>
+                            <option value="LowtoHigh">Price,low to high</option>
+                            <option value="HightoLow">Price,high to low</option>
+                        </select>
+                    </div>
                 </div>
-                <div className="filters">
-                    <select onChange={(e)=>filterProductsList(e.target.value) } name="filers" id="filers" className="cursor-pointer py-2 md:px-2 bg-[#E73F10] text-white  md:font-semibold">
-                        <option value="OldtoNew">Date,old to new</option>
-                        <option value="NewtoOld">Date,new to old</option>
-                        <option value="LowtoHigh">Price,low to high</option>
-                        <option value="HightoLow">Price,high to low</option>
-                    </select>
-                </div>
-                <p className="text-sm md:text-lg font-semibold">Showing 1-{products.length} of {products.length} results</p>
+                <p className="text-lg font-semibold flex-1 text-right">Showing 1-{products.length} of {products.length} results</p>
             </div>
             <AnimatePresence>
             {isList &&

@@ -151,8 +151,6 @@ export default async function ProductPage({params}:{params: { id: string }}){
                             <div className="flex gap-2 cursor-pointer hover:text-[#E73F10]"><FaFacebookF className="mt-[2px]"/> <span>Facebook</span></div>
                             <div className="flex gap-2 cursor-pointer hover:text-[#E73F10]"><FaXTwitter className="mt-[3px]" /> <span>X</span></div>
                             <div className="flex gap-2 cursor-pointer hover:text-[#E73F10]"><FaInstagram className="mt-[3px]"/> <span>Instagram</span></div>
-
-                            <div className="flex gap-2 cursor-pointer hover:text-[#E73F10]"><FaPinterest className="mt-[3px]"/> <span>Pinterest</span></div>
                         </div>
                     </div>
                 </>
