@@ -50,9 +50,9 @@ export default async function Home() {
           <div className="w-full flex flex-col mb-20">
             <h2 className="text-2xl text-center font-medium mb-4">Featured Products</h2>
             <FeaturedSlider items={FeaturedItems} />
-            <Link href={'/products'}>
+            <Link className="mx-auto" href={'/products'}>
               <button
-                  className="relative mx-auto w-30 z-10 mt-8 md:mt-20 px-6 py-2 bg-[#E73F10] text-white text-lg rounded overflow-hidden transition duration-300 hover:text-white before:absolute before:inset-0 before:bg-amber-400 before:w-0 before:h-full before:transition-all before:duration-300 hover:before:w-full before:z-0"
+                  className="relative  w-30 z-10 mt-8 md:mt-20 px-6 py-2 bg-[#E73F10] text-white text-lg rounded overflow-hidden transition duration-300 hover:text-white before:absolute before:inset-0 before:bg-amber-400 before:w-0 before:h-full before:transition-all before:duration-300 hover:before:w-full before:z-0"
                   >
                   <span className="relative z-20">View All</span>
               </button>
@@ -61,7 +61,7 @@ export default async function Home() {
           <div className="w-full flex flex-col mb-12">
             <h2 className="text-2xl text-center font-medium mb-4">New Arrivals</h2>
             <NewArrivalSlider items={NewArrivalItems} />
-            <Link href={'/products'} >
+            <Link className="mx-auto" href={'/products'} >
               <button
                   className="relative mx-auto w-30 z-10 mt-8 md:mt-20 px-6 py-2 bg-[#E73F10] text-white text-lg rounded overflow-hidden transition duration-300 hover:text-white before:absolute before:inset-0 before:bg-amber-400 before:w-0 before:h-full before:transition-all before:duration-300 hover:before:w-full before:z-0"
                   >

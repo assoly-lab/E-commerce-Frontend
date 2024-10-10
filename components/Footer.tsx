@@ -11,8 +11,8 @@ export default function Footer(){
     
 
     return (
-        <div className="bg-[#EBEBEB] container">
-            <div className="w-full pt-16 pl-4 mt-8 border border-b-gray-300 md:flex md:justify-center md:gap-24">
+        <div className="bg-[#EBEBEB] container md:w-full">
+            <div className="w-full md:w-full pt-16 pl-4 mt-8 border border-b-gray-300 md:flex md:justify-center md:gap-24">
                 <div className="md:w-[435px] w-full pr-2 md:pr-0">
                     <h3 className="font-medium text-2xl mb-6">About Us</h3>
                     <p className="mb-6">E-STORE is a dynamic and innovative online retail platform that offers a wide range of electronic products to customers worldwide.</p>
