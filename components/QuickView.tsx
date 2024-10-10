@@ -94,12 +94,10 @@ export default function QuickView(){
                     return product
                 })
                 localStorage.setItem('cart',JSON.stringify(updatedLocalItems))
-                toast.success('locals Updated !')
             }
             else{
                 const products = JSON.parse(data)
                 localStorage.setItem('cart',JSON.stringify([...products,{quantity:quantity,id:item.id}]))
-                toast.success('local added !')
             }
         }
     }

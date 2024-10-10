@@ -93,12 +93,10 @@ export default function AddToCart({item}:{item:Product}){
                     return product
                 })
                 localStorage.setItem('cart',JSON.stringify(updatedLocalItems))
-                toast.success('locals Updated !')
             }
             else{
                 const products = JSON.parse(data)
                 localStorage.setItem('cart',JSON.stringify([...products,{quantity:quantity,id:item.id}]))
-                toast.success('local added !')
             }
         }
         // const data = localStorage.getItem('cart')

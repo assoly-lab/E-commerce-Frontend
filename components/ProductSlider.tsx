@@ -20,9 +20,9 @@ export default function ProductSlider({product}:{product:Product}){
     arrows:false,
     fade:true,
     appendDots: (dots:React.ReactNode[]) => (
-        <ul style={{gap:"30px"}} className="custom-dots w-[90%] mx-auto md:mx-0 md:w-full flex justify-center">
+        <ul style={{gap:"30px",margin:'0 auto'}} className="custom-dots w-[90%] mx-auto md:mx-0 md:w-[90%] flex justify-center">
             {images.map((image:Img, index:number) => (
-                <li style={{width:"100px",cursor:"pointer"}} key={index} className=" cursor-pointer" onClick={()=>setMainImage((prev:string) => prev != image.image ? image.image: prev)}>
+                <li style={{width:"100px",cursor:"pointer"}} key={index} className=" cursor-pointer border border-gray-100" onClick={()=>setMainImage((prev:string) => prev != image.image ? image.image: prev)}>
                     <Image className='' src={image.image} width={100} height={100} alt={product.name}/>
                 </li>
             ))}
@@ -41,12 +41,11 @@ export default function ProductSlider({product}:{product:Product}){
                     <div className="w-screen">
                         <div className="image-container flex-1 pb-4 flex items-center justify-center overflow-hidden z-0">
                             <Image
-                            
                                 width={570}
                                 height={570}   
                                 src={mainImage} 
                                 alt={product.description!} 
-                                className="w-[400px] h-[400px] md:w-[570px] md:h-[570px] z-0"
+                                className="w-[350px] h-[350px] md:w-[570px] md:h-[570px] z-0"
                                 
                             />
                         </div>
