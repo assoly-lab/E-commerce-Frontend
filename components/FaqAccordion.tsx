@@ -37,7 +37,7 @@ const FaqAccordion = () => {
   return (
     <div className="md:w-[70%] flex flex-col gap-2">
       {faqData.map((faq, index) => (
-        <div key={index} className="border border-gray-200 py-4 px-4">
+        <div key={index} className="w-full border border-gray-200 py-4 px-4 rounded-md">
           <div
             className="cursor-pointer text-base md:text-lg font-semibold flex justify-between items-center  "
             onClick={() => toggleAccordion(index)}
