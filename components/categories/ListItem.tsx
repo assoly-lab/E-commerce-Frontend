@@ -25,17 +25,18 @@ export default function ListItem({product}:{product:Product}){
             localStorage.setItem('cart',JSON.stringify([{quantity:1,id:id}]))
         }
     }
+    console.log(product.main_image)
 
     return (
         <div className="bg-gray-100 flex flex-col md:flex-row gap-8 p-8 w-full md:h-[300px] rounded-lg" >
         <div className="relative md:w-[30%] md:h-[260px] group bg-white rounded-lg" >
-            <Link className="absolute h-full w-full top-0 left-0 z-40" href={`http://localhost:3000/product/${product.id}`}></Link>
-            <Image className="rounded-lg w-full h-full transition duration-300 group-hover:opacity-0" src={product.main_image} width={260} height={260} alt={product.description!} />
-            <Image className="rounded-lg absolute opacity-0 top-0 w-full h-full left-0  z-10 md:my-0  transition duration-300 ease-in-out group-hover:opacity-100" src={product.images!.length > 0  ? product.images![0].image : product.main_image } width={260} height={260} alt={product.name} />
+            <Link className="absolute h-full w-full top-0 left-0 z-40" href={`https://e-commerce-frontend-three-mu.vercel.app/product/${product.id}`}></Link>
+            <Image className="rounded-lg w-full h-full transition duration-300 group-hover:opacity-0" src={`https://abdo008.pythonanywhere.com${product.main_image}`} width={260} height={260} alt={product.description!} />
+            <Image className="rounded-lg absolute opacity-0 top-0 w-full h-full left-0  z-10 md:my-0  transition duration-300 ease-in-out group-hover:opacity-100" src={product.images!.length > 0  ? `https://abdo008.pythonanywhere.com${product.images![0].image}` : `https://abdo008.pythonanywhere.com${product.main_image}` } width={260} height={260} alt={product.name} />
         </div>
 
         <div className="infos md:w-[70%] flex flex-col gap-4">
-            <Link href={`http://localhost:3000/product/${product.id}`} className="text-xl md:text-2xl font-semibold hover:text-[#E73F10] cursor-pointer line-clamp-1 ">{product.name}</Link>
+            <Link href={`https://e-commerce-frontend-three-mu.vercel.app/product/${product.id}`} className="text-xl md:text-2xl font-semibold hover:text-[#E73F10] cursor-pointer line-clamp-1 ">{product.name}</Link>
             <p className="text-lg text-white font-semibold  bg-[#E73F10] px-2 rounded-lg w-fit">{product.price} MAD</p>
             <p className="line-clamp-4 text-base font-medium">{product.description}</p>
             <div className="flex gap-4">

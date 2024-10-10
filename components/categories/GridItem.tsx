@@ -31,8 +31,8 @@ export default function GridItem({product}:{product:Product}){
             {product && 
                     <div key={product.id} className="mb-6 md:mr-2 md:ml-2">
                     <div className="relative bg-white rounded-xl py-4 px-2 md:py-4 md:pl-4 flex group" >
-                        <Image className="rounded-lg transition duration-500 w-full h-full ease-in-out group-hover:opacity-0 z-10 md:my-0 md:mx-auto" src={product.main_image} width={220} height={220} alt={product.name} />
-                        <Image className="rounded-lg absolute opacity-0 top-0 w-full h-full left-0  z-10 md:my-0  transition duration-300 ease-in-out group-hover:opacity-100" src={product.images!.length > 0  ? product.images![0].image : product.main_image } width={220} height={220} alt={product.name} />
+                        <Image className="rounded-lg transition duration-500 w-full h-full ease-in-out group-hover:opacity-0 z-10 md:my-0 md:mx-auto" src={`https://abdo008.pythonanywhere.com${product.main_image}`} width={220} height={220} alt={product.name} />
+                        <Image className="rounded-lg absolute opacity-0 top-0 w-full h-full left-0  z-10 md:my-0  transition duration-300 ease-in-out group-hover:opacity-100" src={product.images!.length > 0  ? `https://abdo008.pythonanywhere.com${product.images![0].image}` : `https://abdo008.pythonanywhere.com${product.main_image}` } width={220} height={220} alt={product.name} />
                     
                             <motion.div className="absolute inset-0 flex flex-col justify-end items-center bottom-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-20"
                                     initial={{ y: 30, opacity: 0 }}
@@ -61,7 +61,7 @@ export default function GridItem({product}:{product:Product}){
                                 </div>
                             </motion.div>    
                     </div>
-                    <Link className="z-20" href={`http://localhost:3000/product/${product.id}`}>
+                    <Link className="z-20" href={`https://e-commerce-frontend-three-mu.vercel.app/product/${product.id}`}>
                     <h2 className="md:text-xl mt-2 hover:text-[#E73F10] cursor-pointer line-clamp-1 text-center mx-auto">{product.name}</h2>
                     <p className="text-base mt-2 text-white font-semibold  bg-[#E73F10] px-2 rounded-lg w-fit mx-auto">{product.price} MAD</p>
                     </Link>
