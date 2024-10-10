@@ -4,13 +4,12 @@ const nextConfig = {
     images: {
         remotePatterns: [
           {
-            protocol: 'http',
-            hostname: 'localhost',
-            port: '8000',
+            protocol: 'https',
+            hostname: 'abdo008.pythonanywhere',
             pathname: '/media/**/**',
           },
         ],
-        domains: ['http://localhost:8000'],
+        domains: ['https://abdo008.pythonanywhere.com'],
       },
 
 };
