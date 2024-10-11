@@ -3,7 +3,7 @@
 import { RegisterFormErrors } from "@/utils/Types"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useRef, useState } from "react"
+import { useRef, useState,useEffect } from "react"
 import toast from "react-hot-toast"
 
 
@@ -12,6 +12,14 @@ export default function RegisterForm(){
     const [ formErrors,setFormErrors ] = useState<RegisterFormErrors>({})
     const ref = useRef<HTMLFormElement>(null)
     const router = useRouter()
+
+    useEffect(()=>{
+        const access = localStorage.getItem('access')
+        if(access){
+            router.push('/profile')
+        }
+    },[])
+
     return (
         <form ref={ref} action={async (formData:FormData)=>{
             const errors:RegisterFormErrors = {}
@@ -68,7 +76,7 @@ export default function RegisterForm(){
                    toast.error(error.message)
                 }
 
-        }} className="py-6 bg-gray-200 rounded-lg w-[40%]  flex flex-col items-center gap-4">
+        }} className="py-6 bg-gray-200 rounded-lg w-[90%] md:w-[40%]  flex flex-col items-center gap-4">
             <h2 className="text-3xl font-semibold">Register</h2>
             <p>Please register using account detail bellow.</p>
             <div className="w-full flex flex-col justify-center items-center">
@@ -92,8 +100,8 @@ export default function RegisterForm(){
             {formErrors.password && <span className="w-[90%] text-red-500 text-sm font-medium" >{formErrors.password}</span>}
             </div>
             <input type="submit" value="Register" className="w-[60%] text-xl font-semibold text-white bg-[#e36643] py-2 cursor-pointer rounded-md hover:bg-[#E73F10]"/>
-            <div className="px-4 w-[90%] flex justify-between">
-                <Link href={'/'} className="text-[#e36643] hover:text-[#E73F10] underline underline-offset-2">Go back to store</Link>
+            <div className="px-4 w-full md:w-[90%] flex justify-between text-sm md:text-base">
+                <Link href={'/'} className="text-[#e36643]  hover:text-[#E73F10] underline underline-offset-2">Go back to store</Link>
                 <Link href={'/login'} className="text-[#e36643] hover:text-[#E73F10] underline underline-offset-2">You have an account? Login</Link>
             </div>
         </form>

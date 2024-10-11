@@ -85,7 +85,7 @@ export default function LoginForm(){
         }
     },[router])
     return (
-        <form ref={ref} className="py-6 bg-gray-200 rounded-lg w-[40%]  flex flex-col items-center gap-4" action={async (formData:FormData)=>{
+        <form ref={ref} className="py-6 bg-gray-200 rounded-lg w-[90%] md:w-[40%]  flex flex-col items-center gap-4" action={async (formData:FormData)=>{
             const errors:LoginFormErrors = {}
             const email = formData.get('email')
             const password = formData.get('password')
@@ -144,7 +144,7 @@ export default function LoginForm(){
             <input type="password" name="password" id="password" placeholder="Password" className="w-[90%] p-4 rounded-md placeholder:text-black focus:outline-none focus:border focus:border-[#e36643] text-lg" />
             {formErrors.password && <span className="w-[90%] text-red-500 text-sm font-medium" >{formErrors.password}</span>}
             <input type="submit" value="Sign In" className="w-[60%] text-xl font-semibold text-white bg-[#e36643] py-2 cursor-pointer rounded-md hover:bg-[#E73F10]"/>
-            <div className="px-4 w-[90%]  flex justify-between">
+            <div className="px-4 w-full md:w-[90%]  flex justify-between text-sm md:text-base">
                 <Link href={'/register'} className="text-[#e36643] hover:text-[#E73F10] underline underline-offset-2">Create an account</Link>
                 <Link href={'/reset'} className="text-[#e36643] hover:text-[#E73F10] underline underline-offset-2" >Forgot your password?</Link>
             </div>
