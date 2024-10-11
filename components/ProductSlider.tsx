@@ -38,7 +38,7 @@ export default function ProductSlider({product}:{product:Product}){
       {/* Main Image Slider */}
       <div style={{zIndex:'0'}} className="mb-8">
       {/* <Slider {...settings}> */}
-                    <div className="w-screen w-auto">
+                    <div className="w-screen md:w-auto">
                         <div className="pb-4 flex items-center justify-center overflow-hidden z-0">
                             <Image
                                 width={570}
