@@ -38,8 +38,8 @@ export default function ProductSlider({product}:{product:Product}){
       {/* Main Image Slider */}
       <div style={{zIndex:'0'}} className="mb-8">
       {/* <Slider {...settings}> */}
-                    <div className="w-screen md:w-auto">
-                        <div className="image-container flex-1 pb-4 flex items-center justify-center overflow-hidden z-0">
+                    <div className="w-screen w-auto">
+                        <div className="pb-4 flex items-center justify-center overflow-hidden z-0">
                             <Image
                                 width={570}
                                 height={570}   
@@ -49,9 +49,9 @@ export default function ProductSlider({product}:{product:Product}){
                                 
                             />
                         </div>
-                        <ul className="w-[90%] flex gap-4 pb-2 overflow-x-auto">
+                        <ul className="w-[90%] flex gap-4 pb-2 overflow-x-auto mx-auto">
                           {images.map((image:Img, index:number) => (
-                              <li style={{}} key={index} className=" cursor-pointer border border-[#E73F10] min-w-[150px] group overflow-hidden rounded-md" onClick={()=>setMainImage((prev:string) => prev != image.image ? image.image: prev)}>
+                              <li style={{}} key={index} className=" cursor-pointer border border-[#E73F10] min-w-[100px] group overflow-hidden rounded-md" onClick={()=>setMainImage((prev:string) => prev != image.image ? image.image: prev)}>
                                   <Image className='group-hover:scale-110 mx-auto' src={image.image} width={130} height={130} alt={product.name}/>
                               </li>
             ))}
