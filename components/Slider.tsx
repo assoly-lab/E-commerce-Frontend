@@ -118,6 +118,7 @@ export default function AnimatedSlider(){
                                 height={570}   
                                 src={category.image!} 
                                 alt={category.description!} 
+                                priority
                                 
                             />
                         </div>

@@ -74,9 +74,9 @@ export default function Navbar(){
             <div className="flex mr-1 ">
                 <IoSearch className="w-[25px] h-[25px] cursor-pointer hover:text-[#E73F10]" />
                 <Link href={'/profile'}><FaRegUser className="w-[25px] h-[20px] ml-4 mt-[2px] cursor-pointer hover:text-[#E73F10]" /></Link>
-                <div className=" relative hover:text-[#E73F10]">
-                    <GrCart onClick={()=>setIsCart(true)} className="w-[25px] h-[20px] ml-4 mt-[2px] cursor-pointer" />
-                    <span className=" absolute text-sm top-0 -right-2 cursor-pointer">{cartCount}</span>
+                <div onClick={()=>setIsCart(true)}  className=" relative cursor-pointer hover:text-[#E73F10]">
+                    <GrCart className="w-[25px] h-[20px] ml-4 mt-[2px] " />
+                    <span className=" absolute text-sm -top-1 -right-3 cursor-pointer text-white bg-[#E73F10] px-1.5 rounded-full font-semibold">{cartCount}</span>
                 </div>
             </div>
         </div>

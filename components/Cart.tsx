@@ -95,12 +95,12 @@ export default function Cart(){
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 100, transition:{duration:0.2} }}
                 transition={{ duration: 0.2, delay: 0.3 }}
-                onClick={(e)=>e.stopPropagation()} className="relative pr-4 md:pr-0 w-[70%] md:w-[30%] min-h-screen bg-white">
-                    <div className="flex justify-between px-4 py-8 border border-b-gray-300">
+                onClick={(e)=>e.stopPropagation()} className="relative  md:pr-0 w-[70%] md:w-[30%] min-h-screen bg-white">
+                    <div className="w-full flex justify-between px-4 py-8 border-b border-b-gray-300">
                         <p className="font-medium text-lg">Cart</p>
                         <IoCloseOutline onClick={()=>{setIsCart(false)}} className="w-6 h-6 hover:text-red-600 cursor-pointer"  />
                     </div>
-                    <div ref={ref} style={style} className="cart-items ml-4 mt-4 max-h-[396px] md:pr-4">
+                    <div ref={ref} style={style} className="cart-items ml-4 mt-4 max-h-[396px] pr-4">
 
                         { cartItems.length != 0 ?
                             
