@@ -20,9 +20,9 @@ export default function ProductSlider({product}:{product:Product}){
     arrows:false,
     fade:true,
     appendDots: (dots:React.ReactNode[]) => (
-        <ul style={{gap:"30px",margin:'0 auto',width:'90%'}} className="custom-dots w-[90%] mx-auto md:mx-0 md:w-[90%] flex justify-center">
+        <ul style={{gap:"30px",display:'block !important',margin:"0 auto !important",width:"90% !important",overflowX:"auto"}} className="">
             {images.map((image:Img, index:number) => (
-                <li style={{width:"100px",cursor:"pointer"}} key={index} className=" cursor-pointer border border-gray-100" onClick={()=>setMainImage((prev:string) => prev != image.image ? image.image: prev)}>
+                <li style={{width:"100px !important",cursor:"pointer",height:"100px !important",display:"inline-block"}} key={index} className=" cursor-pointer border border-gray-100" onClick={()=>setMainImage((prev:string) => prev != image.image ? image.image: prev)}>
                     <Image className='' src={image.image} width={100} height={100} alt={product.name}/>
                 </li>
             ))}
@@ -37,8 +37,8 @@ export default function ProductSlider({product}:{product:Product}){
     <div className="relative flex flex-col items-center">
       {/* Main Image Slider */}
       <div style={{zIndex:'0'}} className="mb-8">
-      <Slider {...settings}>
-                    <div className="w-screen">
+      {/* <Slider {...settings}> */}
+                    <div className="w-screen md:w-auto">
                         <div className="image-container flex-1 pb-4 flex items-center justify-center overflow-hidden z-0">
                             <Image
                                 width={570}
@@ -49,8 +49,15 @@ export default function ProductSlider({product}:{product:Product}){
                                 
                             />
                         </div>
+                        <ul className="w-[90%] flex gap-4 pb-2 overflow-x-auto">
+                          {images.map((image:Img, index:number) => (
+                              <li style={{}} key={index} className=" cursor-pointer border border-[#E73F10] min-w-[150px] group overflow-hidden rounded-md" onClick={()=>setMainImage((prev:string) => prev != image.image ? image.image: prev)}>
+                                  <Image className='group-hover:scale-110 mx-auto' src={image.image} width={130} height={130} alt={product.name}/>
+                              </li>
+            ))}
+        </ul>
                     </div>
-            </Slider>
+            {/* </Slider> */}
       </div>
     </div>
   );

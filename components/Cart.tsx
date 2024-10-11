@@ -95,7 +95,7 @@ export default function Cart(){
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 100, transition:{duration:0.2} }}
                 transition={{ duration: 0.2, delay: 0.3 }}
-                onClick={(e)=>e.stopPropagation()} className="relative pr-4 md:pr-0 w-[70%] md:w-[30%] h-screen bg-white">
+                onClick={(e)=>e.stopPropagation()} className="relative pr-4 md:pr-0 w-[70%] md:w-[30%] min-h-screen bg-white">
                     <div className="flex justify-between px-4 py-8 border border-b-gray-300">
                         <p className="font-medium text-lg">Cart</p>
                         <IoCloseOutline onClick={()=>{setIsCart(false)}} className="w-6 h-6 hover:text-red-600 cursor-pointer"  />
@@ -123,8 +123,8 @@ export default function Cart(){
                                     <p className="text-[#E73F10] font-semibold">{subTotal},00 MAD</p>
                                 </div>
                                 <div className="act-btn w-[80%] flex gap-4 mx-auto my-4 text-white">
-                                    <Link className="flex flex-1 bg-[#E73F10] justify-center rounded-sm font-semibold text-xl" href={'/cart'}><button onClick={()=>{setIsCart(false)}} className=" bg-[#E73F10] py-1">View Cart</button></Link>
-                                    <Link className="flex flex-1 bg-[#E73F10] justify-center rounded-sm font-semibold text-xl" href={'/checkout'}><button className="flex-1 bg-[#E73F10] py-1">Checkout</button></Link>
+                                    <Link className="flex flex-1 bg-[#E73F10] justify-center rounded-sm font-semibold md:text-xl" href={'/cart'}><button onClick={()=>{setIsCart(false)}} className=" bg-[#E73F10] py-1">View Cart</button></Link>
+                                    <Link className="flex flex-1 bg-[#E73F10] justify-center rounded-sm font-semibold md:text-xl" href={'/checkout'}><button className="flex-1 bg-[#E73F10] py-1">Checkout</button></Link>
                                 </div>
                                 <p className="text-center">Free Shipping on All Orders Over 1000 MAD !</p>
                             </>
