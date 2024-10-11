@@ -94,8 +94,8 @@ export default async function ProductPage({params}:{params: { id: string }}){
                     </div>
                     <div className="pl-4 flex-1">
                         <div className="flex flex-col gap-4 pb-6 border-b border-gray-200">
-                            <p className="text-xl font-semibold">{product.name}</p>
-                            <p className="text-2xl font-semibold">{product.price} MAD</p>
+                            <p className="text-2xl font-semibold">{product.name}</p>
+                            <p className="text-xl font-semibold">{product.price} MAD</p>
                         </div>
                         <div className="py-6 border-b border-gray-200 pr-2">
                             <p>{product.description}</p>
