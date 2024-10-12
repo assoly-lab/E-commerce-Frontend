@@ -6,7 +6,7 @@ import { Category, Product } from "@/utils/Types"
 import ProductSlider from "@/components/ProductSlider"
 import { FaAmazonPay, FaApplePay, FaBitcoin, FaGooglePay, FaPaypal, FaCcVisa } from "react-icons/fa6"
 import { FaFacebookF,FaInstagram  } from "react-icons/fa";
-import { FaXTwitter, FaPinterest } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 import Review from "@/components/Review"
 import FeaturedSlider from "@/components/FeaturedSlider"
 import ListReviews from "@/components/ListReviews"

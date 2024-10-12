@@ -1,6 +1,7 @@
 'use client'
 import FeaturedSlider from "@/components/FeaturedSlider";
 import { AppContext } from "@/Contexts/AppContext";
+import { fetchWithAuth } from "@/utils/Helpers";
 import { Cartitem, CartObject, Product } from "@/utils/Types";
 import Image from "next/image";
 import Link from "next/link";
@@ -112,9 +113,10 @@ export default function CartPage(){
 
 const CartPageItem = ({item}:{item:Cartitem})=>{
     const [quantity,setQuantity] = useState<number>(item.quantity)
-    const {cartItems,setCartItems} = useContext(AppContext)
+    const {cartItems,setCartItems,setCartCount} = useContext(AppContext)
 
-    const IncrementUpdate = ()=>{
+    const IncrementUpdate = async()=>{
+        const access = localStorage.getItem('access')
         const updatedItems = cartItems.map((obj:Cartitem)=>{
             if(obj.product?.id == item.product?.id){
                 const updatedobj = {
@@ -145,11 +147,22 @@ const CartPageItem = ({item}:{item:Cartitem})=>{
             })
             localStorage.setItem('cart',JSON.stringify(localStorageItems))
         }
+        if(access){
+            const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/update/cartitem/',{
+                method:'PUT',
+                body:JSON.stringify({'product_id':item.product.id,'quantity':quantity + 1})
+            })
+            if(response.ok){
+                const data = await response.json()
+                return data
+            }
+        }
 
 
     }
 
-    const DecrementUpdate = ()=>{
+    const DecrementUpdate = async ()=>{
+        const access = localStorage.getItem('access')
         const updatedItems = cartItems.map((obj:Cartitem)=>{
             if(obj.product?.id == item.product?.id){
                 const updatedobj = {
@@ -177,6 +190,16 @@ const CartPageItem = ({item}:{item:Cartitem})=>{
                 return localItem
             })
             localStorage.setItem('cart',JSON.stringify(localStorageItems))
+        }
+        if(access){
+            const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/update/cartitem/',{
+                method:'PUT',
+                body:JSON.stringify({'product_id':item.product.id,'quantity':quantity - 1})
+            })
+            if(response.ok){
+                const data = await response.json()
+                return data
+            }
         }
 
 
@@ -206,7 +229,41 @@ const CartPageItem = ({item}:{item:Cartitem})=>{
                         }}>+</span>
                     </div>
                 <p>{quantity * parseFloat(item.product?.price.toString())}.00 MAD</p>
-                <IoCloseOutline className="w-6 h-8 cursor-pointer text-red-600 transition duration-200 ease-in-out hover:scale-125" />
+                <IoCloseOutline onClick={async ()=>{
+                const id = item.product.id
+                const access = localStorage.getItem('access')
+                if(id){
+                    setCartItems(cartItems.filter((product:Cartitem )=>product.product.id != Number(id)))
+                    setCartCount((prev:number)=>  prev != 0 ? prev - 1 : 0)
+                    const data = localStorage.getItem('cart')
+                    if (data) {
+                        const ids = JSON.parse(data)
+                        const newData = ids.filter((prodId:CartObject) => prodId.id != Number(id) )
+                        localStorage.setItem('cart',JSON.stringify(newData))
+                    }
+                    if(access){
+                        try {
+                            const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/delete/cartitem/',{
+                                method:'DELETE',
+                                headers:{
+                                    'Content-type':'application/json'
+                                } ,
+                                body:JSON.stringify({
+                                    product_id:id,
+                                })
+                            })
+                            if(response.ok){
+                                const data = await response.json()
+                                return data
+                            }
+                        }catch(e){
+                            const error = e as Error
+                            return error.message
+                        }   
+                    }
+                }
+               
+                }} className="w-6 h-8 cursor-pointer text-red-600 transition duration-200 ease-in-out hover:scale-125" />
             </div>
             }
             

@@ -1,5 +1,6 @@
 import { AppContext } from "@/Contexts/AppContext";
-import { Cartitem, CartObject, Product } from "@/utils/Types";
+import { fetchWithAuth } from "@/utils/Helpers";
+import { Cartitem, CartObject } from "@/utils/Types";
 import Image from "next/image";
 import { useContext } from "react";
 import { IoCloseOutline } from "react-icons/io5";
@@ -13,8 +14,9 @@ export default function CartItem({item}:{item:Cartitem}){
         <>
         {item.product &&
             <div id={`${item.product?.id}`} className="relative flex items-center gap-4 py-4">
-            <IoCloseOutline onClick={()=>{
+            <IoCloseOutline onClick={async ()=>{
                 const id = item.product.id
+                const access = localStorage.getItem('access')
                 if(id){
                     setCartItems(cartItems.filter((product:Cartitem )=>product.product.id != Number(id)))
                     setCartCount((prev:number)=>  prev != 0 ? prev - 1 : 0)
@@ -23,6 +25,26 @@ export default function CartItem({item}:{item:Cartitem}){
                         const ids = JSON.parse(data)
                         const newData = ids.filter((prodId:CartObject) => prodId.id != Number(id) )
                         localStorage.setItem('cart',JSON.stringify(newData))
+                    }
+                    if(access){
+                        try {
+                            const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/delete/cartitem/',{
+                                method:'DELETE',
+                                headers:{
+                                    'Content-type':'application/json'
+                                } ,
+                                body:JSON.stringify({
+                                    product_id:id,
+                                })
+                            })
+                            if(response.ok){
+                                const data = await response.json()
+                                return data
+                            }
+                        }catch(e){
+                            const error = e as Error
+                            return error.message
+                        }   
                     }
                 }
                
