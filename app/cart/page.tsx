@@ -28,6 +28,26 @@ export default function CartPage(){
 
 
     useEffect(()=>{
+        const handleCartItems =  async (data:number[],items:CartObject[])=>{
+            try {
+                const response = await fetch('https://abdo008.pythonanywhere.com/api/cart/',{
+                    method:'POST',
+                    headers:{
+                        'Content-type':'application/json'
+                    } ,
+                    body:JSON.stringify({
+                        product_ids:data,
+                    })
+                })
+                if(response.ok){
+                    const data = await response.json()
+                    const objects = data.map((obj:Product,index:number)=> {return {quantity:items[index].quantity,product:obj}} )
+                    setCartItems(objects)
+                }
+            }catch(error){
+                console.log(error)
+            }
+        }
         const getUserCartItems = async (setCartCount:React.Dispatch<React.SetStateAction<number>>)=>{
     const accessToken = localStorage.getItem('access')
     if(accessToken){
@@ -40,6 +60,9 @@ export default function CartPage(){
 
             setCartCount(data.length)
             localStorage.setItem('cart',userCartItems)
+            const ids = data.map((item:CartObject)=> item.id)
+            handleCartItems(ids,data)
+
             
         }else {
             const errorData = await response.json(); // Parse error response
@@ -63,34 +86,34 @@ export default function CartPage(){
 
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(()=>{
-        const handleCartItems =  async (data:number[],items:CartObject[])=>{
-            try {
-                const response = await fetch('https://abdo008.pythonanywhere.com/api/cart/',{
-                    method:'POST',
-                    headers:{
-                        'Content-type':'application/json'
-                    } ,
-                    body:JSON.stringify({
-                        product_ids:data,
-                    })
-                })
-                if(response.ok){
-                    const data = await response.json()
-                    const objects = data.map((obj:Product,index:number)=> {return {quantity:items[index].quantity,product:obj}} )
-                    setCartItems(objects)
-                }
-            }catch(error){
-                console.log(error)
-            }
-        }
-            const data = localStorage.getItem('cart')
-            if(data){
-                const items = JSON.parse(data)
-                const ids = items.map((item:CartObject)=> item.id)
-                handleCartItems(ids,items)
-            }
-    },[])
+    // useEffect(()=>{
+    //     const handleCartItems =  async (data:number[],items:CartObject[])=>{
+    //         try {
+    //             const response = await fetch('https://abdo008.pythonanywhere.com/api/cart/',{
+    //                 method:'POST',
+    //                 headers:{
+    //                     'Content-type':'application/json'
+    //                 } ,
+    //                 body:JSON.stringify({
+    //                     product_ids:data,
+    //                 })
+    //             })
+    //             if(response.ok){
+    //                 const data = await response.json()
+    //                 const objects = data.map((obj:Product,index:number)=> {return {quantity:items[index].quantity,product:obj}} )
+    //                 setCartItems(objects)
+    //             }
+    //         }catch(error){
+    //             console.log(error)
+    //         }
+    //     }
+    //         const data = localStorage.getItem('cart')
+    //         if(data){
+    //             const items = JSON.parse(data)
+    //             const ids = items.map((item:CartObject)=> item.id)
+    //             handleCartItems(ids,items)
+    //         }
+    // },[])
 
     useEffect(()=>{
         const total = cartItems.reduce((acc:number,item:Cartitem)=>{
