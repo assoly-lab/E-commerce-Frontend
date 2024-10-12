@@ -32,7 +32,7 @@ export default function CartPage(){
     const accessToken = localStorage.getItem('access')
     if(accessToken){
         try{
-        const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/list/cartitems/')
+        const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/list/cartitems/',{cache:"no-store"})
         if(response.ok){
             const data = await response.json()
             

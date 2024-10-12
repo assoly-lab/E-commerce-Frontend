@@ -23,7 +23,7 @@ const handleUserCartItems = async (accessToken:string) => {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json',
-                }
+                },
             });
 
             // Handle different response statuses
@@ -51,19 +51,13 @@ const getUserCartItems = async (setCartCount:React.Dispatch<React.SetStateAction
     const accessToken = localStorage.getItem('access')
     if(accessToken){
         try{
-        const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/list/cartitems/')
+        const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/list/cartitems/',{cache:"no-store"})
         if(response.ok){
             const data = await response.json()
             
             const userCartItems = JSON.stringify(data)
-            if(localData){
-                const parsedLocalData = JSON.parse(localData)
-                setCartCount((prev:number) => prev + data.length)
-                localStorage.setItem('cart',JSON.stringify([...parsedLocalData,...data]))
-            }else{ 
                 setCartCount(data.length)
                 localStorage.setItem('cart',userCartItems)
-            }
             
         }else {
             const errorData = await response.json(); // Parse error response
