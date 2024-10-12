@@ -73,7 +73,7 @@ export default function BestSellingItem({items}:{items:Product[]}){
                                                 headers:{
                                                     'Content-type':'application/json'
                                                 } ,
-                                                body:JSON.stringify({'cart_items':{
+                                                body:JSON.stringify({'cart_item':{
                                                     'id':item.id,
                                                     'quantity':1
                                                 }})
