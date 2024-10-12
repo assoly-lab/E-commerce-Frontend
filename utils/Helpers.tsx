@@ -4,6 +4,7 @@
 function isTokenExpired(token: string): boolean {
     const payload = JSON.parse(atob(token.split('.')[1])); // Decode token payload
     const expiryTime = payload.exp * 1000; // Convert expiry to milliseconds
+    console.log(Date.now() > expiryTime)
     return Date.now() > expiryTime; // Check if token is expired
 }
 

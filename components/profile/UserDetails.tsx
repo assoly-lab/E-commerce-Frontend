@@ -1,10 +1,11 @@
 'use client'
 
+import { AppContext } from "@/Contexts/AppContext"
 import { fetchWithAuth } from "@/utils/Helpers"
-import { UserInfos } from "@/utils/Types"
+import { CartObject, Product, UserInfos } from "@/utils/Types"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import ChangePassword from "../ChangePassword"
 
 
@@ -15,7 +16,7 @@ export default function UserDetails(){
     const [isLoading,setIsLoading] = useState<Boolean>(false)
     const [changePassword,setChangePassword] = useState<Boolean>(false)
     const router = useRouter()
-
+    const { cartItems,setCartItems } = useContext(AppContext)
     useEffect(()=>{
         const access = localStorage.getItem('access')
         if(!access){
@@ -35,7 +36,6 @@ export default function UserDetails(){
                         throw new Error('something went wrong!')
                     }
                     const data = await response.json()
-                    console.log('user data: ',data)
                     setUserDetails(data)
                     setIsLoading(false)
                     
@@ -46,7 +46,45 @@ export default function UserDetails(){
             }
                 }
         getUserInfos()
-    },[router])
+    },[])
+
+    useEffect(()=>{
+        
+        const handleCartItems =  async (data:number[],items:CartObject[])=>{
+            setIsLoading(true)
+            try {
+                const response = await fetch('https://abdo008.pythonanywhere.com/api/cart/',{
+                    method:'POST',
+                    headers:{
+                        'Content-type':'application/json'
+                    } ,
+                    body:JSON.stringify({
+                        product_ids:data,
+                    })
+                })
+                if(response.ok){
+                    const data = await response.json()
+                    const objects = data.map((obj:Product,index:number)=> {return {quantity:items[index].quantity,product:obj}} )
+                    setIsLoading(false)
+                    setCartItems(objects)
+                }
+            }catch(error){
+                setIsLoading(false)
+            }
+        }
+
+        if(cartItems.length == 0){
+        const data = localStorage.getItem('cart')
+        if(data){
+            const items = JSON.parse(data)
+            const ids = items.map((item:CartObject)=> item.id)
+            if(ids.length > 0) handleCartItems(ids,items)
+            
+        }
+        }
+    },[])
+    
+
 
     return (
         <div className="w-full h-full flex justify-center">

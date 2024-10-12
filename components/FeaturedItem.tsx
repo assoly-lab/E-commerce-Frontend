@@ -7,6 +7,7 @@ import { useContext } from "react"
 import { AppContext } from "@/Contexts/AppContext"
 import toast from "react-hot-toast"
 import Link from "next/link"
+import { fetchWithAuth } from "@/utils/Helpers";
 
 
 
@@ -50,13 +51,28 @@ export default function FeaturedItem({item}:{item : Product}){
                                         setIsQuickView(true)
                                         setProductId(item.id)
                                 }} className="text-white bg-gray-700 py-1 px-2 rounded hover:bg-[#E73F10] transition-colors z-50"><FaRegEye className="w-[26px] h-[26px]" /></button>
-                                    <button onClick={(e)=>{
+                                    <button onClick={async (e)=>{
                                         e.stopPropagation()
                                         handleCart(item.id)
                                         if(cartItems.find((product:Cartitem)=>product.product?.id == item.id)){
                                             toast.error('Item already added to cart!')
                                             return
                                         }
+                                        const access = localStorage.getItem('access')
+                                        if(access){
+
+                                            const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/create/cartitem/',{
+                                                method:'POST',
+                                                body:JSON.stringify({'cart_items':{
+                                                    'id':item.id,
+                                                    'quantity':1
+                                                }})
+                                            })
+                                            if(response.ok){
+                                                const data = await response.json()
+                                                return data
+                                            }
+                                    }
                                         setCartItems((prev:Product[] | [])=>[...prev,{quantity:1,product:item}])
                                         setCartCount((prev:number)=>prev + 1)
                                         toast.success('Item added to cart!')

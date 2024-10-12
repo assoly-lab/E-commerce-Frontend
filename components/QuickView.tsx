@@ -49,7 +49,7 @@ export default function QuickView(){
                     })
                     if(response.ok){
                         const data = await response.json()
-                        console.log(data)
+                        return data
                     }
                 }
                 
@@ -70,7 +70,7 @@ export default function QuickView(){
                     })
                     if(response.ok){
                         const data = await response.json()
-                        console.log(data)
+                        return data
                     }
             }
             setCartCount((prev:number) => prev + 1)

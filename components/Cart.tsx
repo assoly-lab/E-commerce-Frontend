@@ -10,7 +10,7 @@ import {motion} from 'framer-motion'
 
 
 export default function Cart(){
-    const {setIsCart,cartItems,setCartItems,isCart,subTotal,setSubTotal} = useContext(AppContext)
+    const {setIsCart,cartItems,setCartItems,subTotal,setSubTotal} = useContext(AppContext)
     const [isLoading,setIsLoading] = useState<Boolean>(false)
     const ref = useRef<HTMLDivElement>(null)
     const [style,setStyle] = useState({})
@@ -32,14 +32,12 @@ export default function Cart(){
                 })
                 if(response.ok){
                     const data = await response.json()
-                    console.log(data)
                     const objects = data.map((obj:Product,index:number)=> {return {quantity:items[index].quantity,product:obj}} )
                     setIsLoading(false)
                     setCartItems(objects)
                 }
             }catch(error){
                 setIsLoading(false)
-                console.log(error)
             }
         }
 
@@ -48,7 +46,8 @@ export default function Cart(){
         if(data){
             const items = JSON.parse(data)
             const ids = items.map((item:CartObject)=> item.id)
-            handleCartItems(ids,items)
+            if(ids.length > 0) handleCartItems(ids,items)
+            
         }
         }
     },[])

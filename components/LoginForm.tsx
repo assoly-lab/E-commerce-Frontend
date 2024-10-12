@@ -49,14 +49,22 @@ const handleUserCartItems = async (accessToken:string) => {
 const getUserCartItems = async (setCartCount:React.Dispatch<React.SetStateAction<number>>)=>{
     const localData = localStorage.getItem('cart')
     const accessToken = localStorage.getItem('access')
-    if(!localData && accessToken){
+    if(accessToken){
         try{
         const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/list/cartitems/')
         if(response.ok){
             const data = await response.json()
-            setCartCount(data.length)
+            
             const userCartItems = JSON.stringify(data)
-            localStorage.setItem('cart',userCartItems)
+            if(localData){
+                const parsedLocalData = JSON.parse(localData)
+                setCartCount((prev:number) => prev + data.length)
+                localStorage.setItem('cart',JSON.stringify([...parsedLocalData,...data]))
+            }else{ 
+                setCartCount(data.length)
+                localStorage.setItem('cart',userCartItems)
+            }
+            
         }else {
             const errorData = await response.json(); // Parse error response
             throw new Error(errorData.error || 'An error occurred while processing your request.');
@@ -120,7 +128,6 @@ export default function LoginForm(){
                             ref?.current.reset()
                         }
                         localStorage.setItem('access', data.access);
-                        console.log('access token: ',data.access)
                         handleUserCartItems(data.access)
                         getUserCartItems(setCartCount)
                         router.push('/profile')
