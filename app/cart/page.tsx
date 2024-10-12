@@ -58,13 +58,11 @@ export default function CartPage(){
                 console.log(error)
             }
         }
-        if(cartItems.length == 0){
             const data = localStorage.getItem('cart')
             if(data){
                 const items = JSON.parse(data)
                 const ids = items.map((item:CartObject)=> item.id)
                 handleCartItems(ids,items)
-            }
             }
     },[])
 
@@ -215,7 +213,7 @@ const CartPageItem = ({item}:{item:Cartitem})=>{
     return (
         <div key={item?.product?.id} className="w-[90%] md:w-[70%] border border-gray-200 flex flex-col items-center gap-4 py-4">
             {item &&
-            <div className="md:flex md:w-full md:gap-12 md:items-center md:justify-center">
+            <div className="md:flex md:w-full md:gap-12 md:items-center md:justify-center flex items-center gap-4">
                 <div className="md:flex md:items-center md:w-[500px] md:gap-4">
                     <Image className="md:h-[150px] w-[150px]" src={item.product?.main_image} width={200} height={200} alt={item.product?.name} />
                     <p className="hidden md:block text-sm">{item.product?.name}</p>

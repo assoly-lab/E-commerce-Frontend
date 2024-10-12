@@ -1,5 +1,6 @@
 'use client'
 import { AppContext } from "@/Contexts/AppContext";
+import { fetchWithAuth } from "@/utils/Helpers";
 import { Cartitem, CartObject, Product } from "@/utils/Types";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -46,7 +47,8 @@ export default function AddToCart({item}:{item:Product}){
     },[])
 
 
-    const handleOnClick = (item:Product)=>{
+    const handleOnClick = async (item:Product)=>{
+        const access = localStorage.getItem('access')
         if( quantity > item.stock){
             toast.error(`only ${item.stock} items are left in the stock`)
             return
@@ -66,12 +68,26 @@ export default function AddToCart({item}:{item:Product}){
                     return product
                 })
                 setCartItems(updatedItems)
+                if(access){
+                    const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/update/cartitem/',{
+                        method:'PUT',
+                        headers:{
+                            'Content-type':'application/json'
+                        } ,
+                        body:JSON.stringify({'product_id':item.id,'quantity':quantity})
+                    })
+                    if(response.ok){
+                        const data = await response.json()
+                        return data
+                    }
+                }
                 toast.success("item's quantity is updated successfully!")
             }
 
         }else{
 
             setCartItems((prev:Cartitem[] | [])=> [...prev,{product:item,quantity:quantity}])
+            
             setCartCount((prev:number) => prev + 1)
             toast.success('Item added to cart successfully!')
         }
