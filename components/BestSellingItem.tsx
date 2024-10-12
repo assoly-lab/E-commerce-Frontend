@@ -70,6 +70,9 @@ export default function BestSellingItem({items}:{items:Product[]}){
 
                                             const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/create/cartitem/',{
                                                 method:'POST',
+                                                headers:{
+                                                    'Content-type':'application/json'
+                                                } ,
                                                 body:JSON.stringify({'cart_items':{
                                                     'id':item.id,
                                                     'quantity':1

@@ -50,6 +50,7 @@ export default function CartPage(){
         }
         const getUserCartItems = async (setCartCount:React.Dispatch<React.SetStateAction<number>>)=>{
     const accessToken = localStorage.getItem('access')
+    const data = localStorage.getItem('cart')
     if(accessToken){
         try{
         const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/list/cartitems/',{cache:"no-store"})
@@ -76,6 +77,12 @@ export default function CartPage(){
         return { error: error.message }; // Return the error message for further handlin
 
     }
+}else{
+            if(data){
+                const items = JSON.parse(data)
+                const ids = items.map((item:CartObject)=> item.id)
+                handleCartItems(ids,items)
+            }
 }
 }
     getUserCartItems(setCartCount)
