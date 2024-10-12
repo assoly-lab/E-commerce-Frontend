@@ -150,6 +150,9 @@ const CartPageItem = ({item}:{item:Cartitem})=>{
         if(access){
             const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/update/cartitem/',{
                 method:'PUT',
+                headers:{
+                    'Content-type':'application/json'
+                } ,
                 body:JSON.stringify({'product_id':item.product.id,'quantity':quantity + 1})
             })
             if(response.ok){
@@ -194,6 +197,9 @@ const CartPageItem = ({item}:{item:Cartitem})=>{
         if(access){
             const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/update/cartitem/',{
                 method:'PUT',
+                headers:{
+                    'Content-type':'application/json'
+                } ,
                 body:JSON.stringify({'product_id':item.product.id,'quantity':quantity - 1})
             })
             if(response.ok){
