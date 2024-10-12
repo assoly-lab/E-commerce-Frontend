@@ -10,7 +10,7 @@ import { IoCloseOutline } from "react-icons/io5";
 
 
 export default function CartPage(){
-    const {cartItems,setCartItems,subTotal,setSubTotal} = useContext(AppContext)
+    const {cartItems,setCartItems,subTotal,setSubTotal,setCartCount} = useContext(AppContext)
     const [featuredItems,setFeaturedItems] = useState<Product[] | []>([])
 
     useEffect( ()=>{
@@ -23,6 +23,39 @@ export default function CartPage(){
             }
           }
           getFeaturedProducts()
+    },[])
+
+
+    useEffect(()=>{
+        const getUserCartItems = async (setCartCount:React.Dispatch<React.SetStateAction<number>>)=>{
+    const localData = localStorage.getItem('cart')
+    const accessToken = localStorage.getItem('access')
+    if(accessToken){
+        try{
+        const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/list/cartitems/')
+        if(response.ok){
+            const data = await response.json()
+            
+            const userCartItems = JSON.stringify(data)
+
+            setCartCount(data.length)
+            localStorage.setItem('cart',userCartItems)
+            
+        }else {
+            const errorData = await response.json(); // Parse error response
+            throw new Error(errorData.error || 'An error occurred while processing your request.');
+        }
+    } catch (e) {
+        const error = e as Error
+        console.error('Error:', error.message); // Log error for debugging
+        // Optionally show error message to the user
+        // For example: setError(error.message) if you're using state management for displaying errors
+        return { error: error.message }; // Return the error message for further handlin
+
+    }
+}
+}
+    getUserCartItems(setCartCount)
     },[])
 
 
@@ -213,7 +246,7 @@ const CartPageItem = ({item}:{item:Cartitem})=>{
     return (
         <div key={item?.product?.id} className="w-[90%] md:w-[70%] border border-gray-200 flex flex-col items-center gap-4 py-4">
             {item &&
-            <div className="md:flex md:w-full md:gap-12 md:items-center md:justify-center flex items-center gap-4">
+            <div className="md:flex md:w-full md:gap-12 md:items-center md:justify-center flex flex-col items-center gap-4">
                 <div className="md:flex md:items-center md:w-[500px] md:gap-4">
                     <Image className="md:h-[150px] w-[150px]" src={item.product?.main_image} width={200} height={200} alt={item.product?.name} />
                     <p className="hidden md:block text-sm">{item.product?.name}</p>
