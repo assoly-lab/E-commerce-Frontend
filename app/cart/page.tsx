@@ -6,6 +6,7 @@ import { Cartitem, CartObject, Product } from "@/utils/Types";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { IoCloseOutline } from "react-icons/io5";
 
 
@@ -28,7 +29,6 @@ export default function CartPage(){
 
     useEffect(()=>{
         const getUserCartItems = async (setCartCount:React.Dispatch<React.SetStateAction<number>>)=>{
-    const localData = localStorage.getItem('cart')
     const accessToken = localStorage.getItem('access')
     if(accessToken){
         try{
@@ -59,14 +59,7 @@ export default function CartPage(){
     },[])
 
 
-    useEffect(()=>{
-        const total = cartItems.reduce((acc:number,item:Cartitem)=>{
-            return acc + (item.quantity * parseFloat(item.product?.price.toString()))
-            
-        },0)
-        setSubTotal(total)
-
-    },[cartItems])
+    
 
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -98,6 +91,15 @@ export default function CartPage(){
                 handleCartItems(ids,items)
             }
     },[])
+
+    useEffect(()=>{
+        const total = cartItems.reduce((acc:number,item:Cartitem)=>{
+            return acc + (item.quantity * parseFloat(item.product?.price.toString()))
+            
+        },0)
+        setSubTotal(total)
+
+    },[cartItems])
 
     return (
         <>
@@ -246,7 +248,7 @@ const CartPageItem = ({item}:{item:Cartitem})=>{
     return (
         <div key={item?.product?.id} className="w-[90%] md:w-[70%] border border-gray-200 flex flex-col items-center gap-4 py-4">
             {item &&
-            <div className="md:flex md:w-full md:gap-12 md:items-center md:justify-center flex flex-col items-center gap-4">
+            <div className="md:flex md:w-full md:gap-12 md:items-center md:justify-center flex flex-col md:flex-row items-center gap-4">
                 <div className="md:flex md:items-center md:w-[500px] md:gap-4">
                     <Image className="md:h-[150px] w-[150px]" src={item.product?.main_image} width={200} height={200} alt={item.product?.name} />
                     <p className="hidden md:block text-sm">{item.product?.name}</p>
@@ -261,8 +263,12 @@ const CartPageItem = ({item}:{item:Cartitem})=>{
                         }}>-</span>
                         <span className="px-4">{quantity}</span>
                         <span className="px-2 bg-green-400 cursor-pointer" onClick={()=>{
+                            if(item.product.stock > quantity){
                             IncrementUpdate()
                             setQuantity((prev:number)=>prev + 1)
+                        }else{
+                            toast.error('you reached quantity available in stock!')
+                        }
                         }}>+</span>
                     </div>
                 <p>{quantity * parseFloat(item.product?.price.toString())}.00 MAD</p>
