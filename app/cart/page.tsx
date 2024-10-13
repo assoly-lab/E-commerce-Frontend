@@ -8,11 +8,13 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IoCloseOutline } from "react-icons/io5";
+import { RiseLoader } from "react-spinners";
 
 
 export default function CartPage(){
     const {cartItems,setCartItems,subTotal,setSubTotal,setCartCount} = useContext(AppContext)
     const [featuredItems,setFeaturedItems] = useState<Product[] | []>([])
+    const [isLoading,setIsLoading] = useState<Boolean>(true)
 
     useEffect( ()=>{
         const getFeaturedProducts = async ()=>{
@@ -42,6 +44,7 @@ export default function CartPage(){
                 if(response.ok){
                     const data = await response.json()
                     const objects = data.map((obj:Product,index:number)=> {return {quantity:items[index].quantity,product:obj}} )
+                    setIsLoading(false)
                     setCartItems(objects)
                 }
             }catch(error){
@@ -137,12 +140,16 @@ export default function CartPage(){
             <p className="text-2xl font-semibold">Your shopping cart</p>
         </div>
         <div className="w-full flex flex-col items-center gap-4 py-4 mb-4">
+            {isLoading &&
+                <RiseLoader size={150} color="#E73F10"  />
+            }
             {
             cartItems.map((item:Cartitem,index:number)=>{
                 return <CartPageItem key={index} item={item} />
             })
             
             }
+            
         </div>
         <div className="w-full flex justify-center gap-6 text-white font-medium text-lg mb-6">
             <Link href={'/'} className="bg-[#E73F10] p-2 rounded-md"> <button>Continue shopping</button> </Link>
