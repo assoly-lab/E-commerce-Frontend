@@ -141,7 +141,7 @@ export default function CartPage(){
         </div>
         <div className="w-full flex flex-col items-center gap-4 py-4 mb-4">
             {isLoading &&
-                <RiseLoader size={150} color="#E73F10"  />
+                <RiseLoader color="#E73F10"  />
             }
             {
             cartItems.map((item:Cartitem,index:number)=>{
