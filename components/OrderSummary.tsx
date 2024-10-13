@@ -16,7 +16,6 @@ export default function OrderSummary(){
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=>{ 
         const handleCartItems =  async (data:number[],items:CartObject[])=>{
-            if(cartItems.length == 0){
             try {
                 const response = await fetch('https://abdo008.pythonanywhere.com/api/cart/',{
                     method:'POST',
@@ -35,7 +34,6 @@ export default function OrderSummary(){
             }catch(error){
                 console.log(error)
             }
-        }
     }
         if(cartItems.length == 0){
             const data = localStorage.getItem('cart')

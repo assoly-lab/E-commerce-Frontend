@@ -7,6 +7,7 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { LiaCartPlusSolid } from "react-icons/lia";
 import { FaRegEye } from "react-icons/fa6";
+import { fetchWithAuth } from "@/utils/Helpers";
 
 
 export default function GridItem({product}:{product:Product}){
@@ -46,13 +47,31 @@ export default function GridItem({product}:{product:Product}){
                                         setIsQuickView(true)
                                         setProductId(product.id)
                                 }} className="text-white bg-gray-700 py-1 px-2 rounded hover:bg-[#E73F10] transition-colors z-50"><FaRegEye className="w-[26px] h-[26px]" /></button>
-                                    <button onClick={(e)=>{
+                                    <button onClick={async (e)=>{
                                         e.stopPropagation()
                                         handleCart(product.id)
                                         if(cartItems.find((item:Cartitem)=>item.product?.id == product.id)){
                                             toast.error('Item already added to cart!')
                                             return
                                         }
+                                        const access = localStorage.getItem('access')
+                                        if(access){
+
+                                            const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/create/cartitem/',{
+                                                method:'POST',
+                                                headers:{
+                                                    'Content-type':'application/json'
+                                                } ,
+                                                body:JSON.stringify({'cart_item':{
+                                                    'id':product.id,
+                                                    'quantity':1
+                                                }})
+                                            })
+                                            if(response.ok){
+                                                const data = await response.json()
+                                                return data
+                                            }
+                                    }
                                         setCartItems((prev:Product[] | [])=>[...prev,{quantity:1,product:product}])
                                         setCartCount((prev:number)=>prev + 1)
                                         toast.success('Item added to cart!')

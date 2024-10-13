@@ -51,7 +51,7 @@ const getUserCartItems = async (setCartCount:React.Dispatch<React.SetStateAction
     const accessToken = localStorage.getItem('access')
     if(accessToken){
         try{
-        const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/list/cartitems/',{cache:"no-store"})
+        const response = await fetchWithAuth('https://abdo008.pythonanywhere.com/api/list/cartitems/')
         if(response.ok){
             const data = await response.json()
             
