@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaAmazonPay, FaApplePay, FaBitcoin, FaCcVisa, FaFacebookF, FaInstagram, FaPaypal, FaTiktok, FaYoutube } from "react-icons/fa";
+import { FaAmazonPay, FaApplePay, FaBitcoin, FaCcVisa, FaFacebookF, FaInstagram, FaPaypal, FaTiktok, FaYoutube  } from "react-icons/fa";
 import { FaGooglePay, FaXTwitter } from "react-icons/fa6";
 
 import MobileFooterLinks from "./MobileFooterLinks";

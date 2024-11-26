@@ -9,7 +9,7 @@ export default function ParentCategoryCountList({categoryCounts}:{categoryCounts
             categoryCounts.map((categoryCount:CategoryCountsList)=>{
                 return (
                     <div key={categoryCount.id} className="flex gap-8" >
-                        <Link  href={`https://e-commerce-frontend-three-mu.vercel.app/${categoryCount.id}`} className="hover:text-[#E73F10]" ><p className="text-lg font-medium">{categoryCount.name}</p></Link>
+                        <Link  href={`https://e-commerce-frontend-three-mu.vercel.app/category/${categoryCount.id}`} className="hover:text-[#E73F10]" ><p className="text-lg font-medium">{categoryCount.name}</p></Link>
                         <p className="text-gray-400">({categoryCount.product_count})</p>
                     </div>
                 )

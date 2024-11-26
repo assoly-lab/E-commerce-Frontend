@@ -7,8 +7,6 @@ import toast from "react-hot-toast";
 import { RiStarSFill } from "react-icons/ri";
 import { motion } from "framer-motion"
 import { AppContext } from "@/Contexts/AppContext";
-import { revalidatePath } from "next/cache";
-
 
 
 const handleReviewSubmit = async (formState: FormState,setFormState:React.Dispatch<React.SetStateAction<FormState>>,id:string,setFormErrors:React.Dispatch<React.SetStateAction<FormErrors>>,reviewsList:ReviewsList,setReviewsList:React.Dispatch<React.SetStateAction<ReviewsList>>,setStars:React.Dispatch<React.SetStateAction<number>>) => {
