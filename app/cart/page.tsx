@@ -140,7 +140,7 @@ export default function CartPage(){
             <p className="text-2xl font-semibold">Your shopping cart</p>
         </div>
         <div className="w-full flex flex-col items-center gap-4 py-4 mb-4">
-            {isLoading &&
+            {isLoading && !cartItems &&
                 <RiseLoader color="#E73F10"  />
             }
             {
